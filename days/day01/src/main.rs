@@ -2,7 +2,7 @@ use std::fs;
 
 fn part1() {
     println!("Day 1 Part 1");
-    let file_path = "./src/day01/input.txt";
+    let file_path = "./src/input.txt";
     println!("In file {}", file_path);
 
     let contents: String =
@@ -12,7 +12,6 @@ fn part1() {
     let mut max: i32 = 0;
     for elf in elves {
         let foods: Vec<&str> = elf.split("\n").collect();
-        println!("Foods:\n{:?}", foods);
         let mut sum: i32 = 0;
         for food in foods {
             if food != "" {
@@ -29,7 +28,7 @@ fn part1() {
 
 fn part2() {
     println!("Day 1 Part 2");
-    let file_path = "./src/day01/input.txt";
+    let file_path = "./src/input.txt";
     println!("In file {}", file_path);
 
     let contents = fs::read_to_string(file_path).expect("Should have been able to read the file");
@@ -44,13 +43,11 @@ fn part2() {
                 .map(|s| s.parse().unwrap())
                 .collect();
             let total = parsed_foods.iter().sum();
-            println!("Foods:\n{total}",);
             return total;
         })
         .collect::<Vec<i32>>();
     elves_mapped_to_nums.sort_by(|a, b| a.partial_cmp(b).unwrap());
 
-    println!("Sorted Totals:\n{:?}", elves_mapped_to_nums);
     let top_three_total = elves_mapped_to_nums[elves_mapped_to_nums.len() - 1]
         + elves_mapped_to_nums[elves_mapped_to_nums.len() - 2]
         + elves_mapped_to_nums[elves_mapped_to_nums.len() - 3];

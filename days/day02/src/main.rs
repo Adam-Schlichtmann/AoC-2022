@@ -1,8 +1,8 @@
 use std::fs;
 
-pub fn part1() {
+fn part1() {
     println!("Day X Part X");
-    let file_path = "./src/dayXX/input.txt";
+    let file_path = "./src/input.txt";
     println!("In file {}", file_path);
 
     let contents: String =
@@ -10,3 +10,19 @@ pub fn part1() {
 }
 
 // Answer:
+
+fn part12() {
+    println!("Day X Part X");
+    let file_path = "./src/input.txt";
+    println!("In file {}", file_path);
+
+    let contents: String =
+        fs::read_to_string(file_path).expect("Should have been able to read the file");
+}
+
+// Answer:
+
+fn main() {
+    part1();
+    part2();
+}
