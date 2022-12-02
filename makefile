@@ -23,28 +23,28 @@ setupDay: solutionFiles download
 ## Create the solution files for the day
 solutionFiles:
 	@echo "${H}=== Copying template for day ${SHORT_DAY} ===${X}"
-	@mkdir -p src/day${LONG_DAY}
-	@cp -r template/ src/day${LONG_DAY}/
-	@git add src/day${LONG_DAY}
-	@-sed -i '' -e "s/!DAY!/${LONG_DAY}/g" src/day${LONG_DAY}/*.* 2> /dev/null || true
-	@-sed -i '' -e "s/!DAY!/${LONG_DAY}/g" src/day${LONG_DAY}/**/*.* 2> /dev/null || true
+	@mkdir -p days/day${LONG_DAY}
+	@cp -r template/ days/day${LONG_DAY}/
+	@git add days/day${LONG_DAY}
+	@-sed -i '' -e "s/!DAY!/${LONG_DAY}/g" days/day${LONG_DAY}/*.* 2> /dev/null || true
+	@-sed -i '' -e "s/!DAY!/${LONG_DAY}/g" days/day${LONG_DAY}/**/*.* 2> /dev/null || true
 
 ## Downloads the instructions and inputs for a day
-download: src/day${LONG_DAY}/README.md src/day${LONG_DAY}/input.txt
+download: days/day${LONG_DAY}/src/README.md days/day${LONG_DAY}/src/input.txt
 
-src/day${LONG_DAY}/input.txt:
+days/day${LONG_DAY}/src/input.txt:
 	@echo "${H}=== Downloading input for day ${SHORT_DAY} ===${X}"
-	@curl -s -b "session=${SESSION}" https://adventofcode.com/${YEAR}/day/${SHORT_DAY}/input > src/day${LONG_DAY}/input.txt
-	@git add src/day${LONG_DAY}/input.txt
+	@curl -s -b "session=${SESSION}" https://adventofcode.com/${YEAR}/day/${SHORT_DAY}/input > days/day${LONG_DAY}/src/input.txt
+	@git add days/day${LONG_DAY}/src/input.txt
 
-src/day${LONG_DAY}/README.md: src/day${LONG_DAY}/challenge.html
+days/day${LONG_DAY}/src/README.md: days/day${LONG_DAY}/src/challenge.html
 	@echo "${H}=== Parsing input ===${X}"
 	@./scripts/parse_challenge.sh ${LONG_DAY}
-	@git add src/day${LONG_DAY}/README.md
+	@git add days/day${LONG_DAY}/src/README.md
 
-src/day${LONG_DAY}/challenge.html:
+days/day${LONG_DAY}/src/challenge.html:
 	@echo "${H}=== Downloading challenge for day ${SHORT_DAY} ===${X}"
-	@curl -s -b "session=${SESSION}" https://adventofcode.com/${YEAR}/day/${SHORT_DAY} > src/day${LONG_DAY}/challenge.html
+	@curl -s -b "session=${SESSION}" https://adventofcode.com/${YEAR}/day/${SHORT_DAY} > days/day${LONG_DAY}/src/challenge.html
 
 
 ## Update the readme with the latest AoC stats
