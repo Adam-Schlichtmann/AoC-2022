@@ -11,7 +11,7 @@ fn part1() {
 
 // Answer:
 
-fn part12() {
+fn part2() {
     println!("Day X Part X");
     let file_path = "./src/input.txt";
     println!("In file {}", file_path);
