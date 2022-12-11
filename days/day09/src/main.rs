@@ -114,7 +114,7 @@ fn build_output(snake: &[Coords]) {
                     && seg.y == (y + base_y - (grid_size_y / 2))
             }) {
                 Some(0) => print!("H"),
-                Some(_) => print!("T"),
+                Some(x) => print!("{x}"),
                 None => print!("."),
             }
         }
