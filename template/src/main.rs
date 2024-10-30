@@ -7,6 +7,7 @@ fn part1() {
 
     let contents: String =
         fs::read_to_string(file_path).expect("Should have been able to read the file");
+    let lines: Vec<&str> = contents.split("\n").filter(|s| !s.is_empty()).collect();
 }
 
 // Answer:
@@ -18,6 +19,7 @@ fn part2() {
 
     let contents: String =
         fs::read_to_string(file_path).expect("Should have been able to read the file");
+    let lines: Vec<&str> = contents.split("\n").filter(|s| !s.is_empty()).collect();
 }
 
 // Answer:
